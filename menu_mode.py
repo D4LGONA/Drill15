@@ -41,6 +41,17 @@ def create_new_world():
     game_world.add_object(server.boy, 1)
 
     # fill here
+    # game_world.add_object(Zombie('nayeon', 3800, 2560, 1.0), 1)
+    # game_world.add_object(Zombie('zwi', 3800, 2560, 1.0), 1)
+    # game_world.add_object(Zombie('yuri', 3800, 2560, 1.0), 1)
+    # game_world.add_object(Zombie('mina', 3800, 2560, 1.0), 1)
+
+    with open('zombie_data.json', 'r') as f:  # f에 제대로 들어왓을때만 실행, 파일 close 안해도됨
+        zombie_data_list = json.load(f)  # 알아서 파싱 해준다
+        for item in zombie_data_list:
+            zombie = Zombie()
+            zombie.__dict__.update(item)
+            game_world.add_object(zombie, 1)
 
 
 def load_saved_world():
